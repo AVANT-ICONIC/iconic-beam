@@ -8,7 +8,7 @@
 
 <br />
 
-<video src="video.mov" width="100%" autoplay loop muted controls></video>
+![ICONIC BEAM Video Showcase](video.mov)
 
 <br />
 <br />
@@ -163,6 +163,16 @@ open index.html
 - **No Mystery Logic:** The CSS is readable and commented.
 - **No Heavy Assets:** Everything is procedurally generated.
 - **No Jitter:** Tested for 60fps+ on modern displays.
+
+---
+
+## License
+
+Distributed under the [MIT License](./LICENSE).
+
+## Credits
+
+Built by **AVANT ICONIC**.
 
 ---
 

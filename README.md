@@ -8,7 +8,7 @@
 
 <br />
 
-![ICONIC BEAM Video Showcase](video.mov)
+<video src="video.mov" width="100%" autoplay loop muted controls></video>
 
 <br />
 <br />
@@ -24,7 +24,7 @@
   <img src="https://img.shields.io/github/stars/AVANT-ICONIC/iconic-beam?style=flat-square&color=fbbf24" alt="stars" />
   <img src="https://img.shields.io/github/forks/AVANT-ICONIC/iconic-beam?style=flat-square&color=f59e0b" alt="forks" />
   <img src="https://img.shields.io/github/issues/AVANT-ICONIC/iconic-beam?style=flat-square&color=d97706" alt="issues" />
-  <img src="https://img.shields.io/github/license/AVANT-ICONIC/iconic-beam?style=flat-square&color=b45309" alt="license" />
+  <img src="https://img.shields.io/badge/license-MIT-b45309?style=flat-square" alt="license" />
   <img src="https://img.shields.io/github/last-commit/AVANT-ICONIC/iconic-beam?style=flat-square&color=92400e" alt="last commit" />
 </p>
 

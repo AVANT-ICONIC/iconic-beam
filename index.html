@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICONIC BEAM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        :root {
+            --card-bg: #0f0f0f;
+        }
+
+        .beam-container {
+            position: relative;
+            border-radius: 20px;
+            background: var(--card-bg);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* The beam effect */
+        .beam-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: var(--bw, 2px);
+            border-radius: inherit;
+            background: conic-gradient(
+                from var(--angle),
+                var(--gradient-map)
+            );
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            filter: drop-shadow(0 0 var(--glow, 2px) var(--primary-color));
+            animation: spin var(--duration, 4s) linear infinite var(--direction, normal);
+        }
+
+        @keyframes spin {
+            from { --angle: 0deg; }
+            to { --angle: 360deg; }
+        }
+
+        .beam-container:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+
+        .node-label {
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+    </style>
+</head>
+<body class="bg-[#050505] text-white min-h-screen flex flex-col items-center justify-center p-8 font-sans">
+    
+    <header class="mb-12 text-center">
+        <h1 class="text-5xl font-black mb-3 tracking-tighter italic bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-600 uppercase">
+            ICONIC BEAM
+        </h1>
+        <p class="text-gray-500 font-mono text-sm tracking-widest">VARIED BEAM COUNT • DYNAMIC VELOCITY • GPU OPTIMIZED</p>
+    </header>
+
+    <div id="grid" class="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
+        <!-- JS will populate unique nodes here -->
+    </div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        
+        const variants = [
+            { 
+                name: 'PULSE', 
+                color: '#3b82f6', 
+                bw: '2px', 
+                dur: '1.5s', 
+                dir: 'normal', 
+                glow: '8px',
+                grad: 'transparent 70%, #3b82f6 85%, #60a5fa 95%, transparent' 
+            },
+            { 
+                name: 'TWIN FIRE', 
+                color: '#ef4444', 
+                bw: '3px', 
+                dur: '6s', 
+                dir: 'reverse', 
+                glow: '4px',
+                grad: 'transparent 10%, #ef4444 20%, transparent 30%, transparent 60%, #f59e0b 70%, transparent 80%' 
+            },
+            { 
+                name: 'TRIPLE NEON', 
+                color: '#a855f7', 
+                bw: '3px', 
+                dur: '2s', 
+                dir: 'normal', 
+                glow: '12px',
+                grad: '#a855f7 0%, transparent 10%, #ec4899 33%, transparent 43%, #3b82f6 66%, transparent 76%, #a855f7 100%' 
+            },
+            { 
+                name: 'GLACIAL', 
+                color: '#ffffff', 
+                bw: '1px', 
+                dur: '12s', 
+                dir: 'normal', 
+                glow: '0px',
+                grad: 'transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%' 
+            },
+            { 
+                name: 'RADAR', 
+                color: '#22c55e', 
+                bw: '4px', 
+                dur: '3s', 
+                dir: 'normal', 
+                glow: '2px',
+                grad: 'transparent 50%, #22c55e 95%, transparent' 
+            },
+            { 
+                name: 'POLICE', 
+                color: '#3b82f6', 
+                bw: '5px', 
+                dur: '0.8s', 
+                dir: 'normal', 
+                glow: '15px',
+                grad: '#ef4444 10%, transparent 20%, transparent 50%, #3b82f6 60%, transparent 70%' 
+            },
+            { 
+                name: 'GHOST', 
+                color: '#64748b', 
+                bw: '1px', 
+                dur: '5s', 
+                dir: 'reverse', 
+                glow: '0px',
+                grad: 'transparent 0%, #475569 5%, transparent 10%, transparent 50%, #475569 55%, transparent 60%' 
+            },
+            { 
+                name: 'STAR', 
+                color: '#fbbf24', 
+                bw: '2px', 
+                dur: '4s', 
+                dir: 'normal', 
+                glow: '15px',
+                grad: '#fbbf24 0%, transparent 5%, #fbbf24 25%, transparent 30%, #fbbf24 50%, transparent 55%, #fbbf24 75%, transparent 80%, #fbbf24 100%' 
+            },
+            { 
+                name: 'VOID', 
+                color: '#ec4899', 
+                bw: '8px', 
+                dur: '10s', 
+                dir: 'reverse', 
+                glow: '20px',
+                grad: 'transparent 0%, transparent 80%, #ec4899 90%, transparent 100%' 
+            },
+            { 
+                name: 'TOXIC', 
+                color: '#84cc16', 
+                bw: '2px', 
+                dur: '2.2s', 
+                dir: 'normal', 
+                glow: '10px',
+                grad: '#84cc16 0%, transparent 15%, #22c55e 50%, transparent 65%, #d9f99d 85%, #84cc16 100%' 
+            }
+        ];
+
+        variants.forEach((v, i) => {
+            const card = document.createElement('div');
+            card.className = 'beam-container group';
+            
+            card.style.setProperty('--primary-color', v.color);
+            card.style.setProperty('--bw', v.bw);
+            card.style.setProperty('--duration', v.dur);
+            card.style.setProperty('--direction', v.dir);
+            card.style.setProperty('--glow', v.glow);
+            card.style.setProperty('--gradient-map', v.grad);
+            
+            card.innerHTML = `
+                <div class="flex flex-col items-center pointer-events-none">
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-gray-600 mb-1 font-bold">Node</span>
+                    <span class="text-xs font-mono font-black node-label transition-all group-hover:tracking-widest" style="--primary-color: ${v.color}">${v.name}</span>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+
+    <footer class="mt-20 flex gap-8 text-[10px] text-gray-700 tracking-[0.3em] uppercase font-bold">
+        <span>by AVANT-ICONIC</span>
+    </footer>
+
+</body>
+</html>

@@ -8,7 +8,7 @@
 
 <br />
 
-<video src="video.mov" width="100%" autoplay loop muted controls></video>
+![ICONIC BEAM Video Showcase](video.gif)
 
 <br />
 <br />

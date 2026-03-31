@@ -37,7 +37,7 @@
   ·
   <a href="index.html">Live Demo</a>
   ·
-  <a href="screenshot.png">Screenshot</a>
+  <a href="video.gif">Video Preview</a>
 </p>
 
 </div>
@@ -152,8 +152,7 @@ open index.html
 .
 ├── README.md           # The file you are reading
 ├── index.html          # The entire application logic
-├── video.mov           # Hero showcase
-└── screenshot.png      # High-res preview
+└── video.gif           # Hero showcase
 ```
 
 ---
